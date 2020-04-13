@@ -1,0 +1,8 @@
+n = int(input('Digite qualquer número de 0 a 9999: '))
+t = '{:04}'.format(n)
+print('O número {} que você digitou tem as seguintes configurações:\nUnidade: {}\nDezena: {}\nCentena: {}\nMilhar: {}'.format(n, t[3], t[2], t[1], t[0]))
+#print(n[len(n)-4])
+#print(n[len(n)-3])
+#print(n[len(n)-2])
+#print(n[len(n)-1])
+#print('{:04}'.format(n))
