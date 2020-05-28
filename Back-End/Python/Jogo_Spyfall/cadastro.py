@@ -1,2 +1,0 @@
-local = list()
-prof = list()
