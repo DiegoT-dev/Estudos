@@ -1,2 +1,2 @@
-# Estudos
- Repositório para meus estudos de Programação
+# Projeto API
+ Repositório com um projeto utilizando FLASK + SQLITE3
