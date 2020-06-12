@@ -7,7 +7,7 @@ import sqlite3
 app = Flask(__name__)
 cor = CORS(app, resource={r'/*':{'origins':'*'}})
 
-cnx = sqlite3.connect('cadastro.bd')
+cnx = sqlite3.connect('cadastro.db')
 c = cnx.cursor()
 
 c.execute('create table if not exists usuarios(id integer primary key AUTOINCREMENT, nome varchar(20), linguagem varchar(15))')
@@ -23,7 +23,7 @@ def index():
 # pesquisa de todos cadastros
 @app.route('/cad')
 def home():
-    cnx = sqlite3.connect('cadastro.bd')
+    cnx = sqlite3.connect('cadastro.db')
     c = cnx.cursor()
     temp = dict()
     cads = list()
@@ -45,7 +45,7 @@ def home():
 # pesquisa por Linguagem
 @app.route('/cad/<string:lg>')
 def devs_per_lang(lg):
-    cnx = sqlite3.connect('cadastro.bd')
+    cnx = sqlite3.connect('cadastro.db')
     c = cnx.cursor()
     temp = dict()
     c.execute(f'select * from usuarios where "linguagem"="{lg}"')
@@ -65,7 +65,7 @@ def devs_per_lang(lg):
 # pesquisa por ID
 @app.route('/cad/<int:id>')
 def devs_per_id(id):
-    cnx = sqlite3.connect('cadastro.bd')
+    cnx = sqlite3.connect('cadastro.db')
     c = cnx.cursor()
     temp = dict()
     cads = list()
@@ -89,7 +89,7 @@ def devs_per_id(id):
 # Inserir dados
 @app.route('/cad', methods=['POST'])
 def sav_dev():
-    cnx = sqlite3.connect('cadastro.bd')
+    cnx = sqlite3.connect('cadastro.db')
     c = cnx.cursor()
 
     c.execute('create table if not exists usuarios(id integer primary key AUTOINCREMENT, nome varchar(20), linguagem varchar(15))')
@@ -108,7 +108,7 @@ def sav_dev():
 # Alterar Linguagem
 @app.route('/cad/<int:id>', methods=['PUT'])
 def change_lang(id):
-    cnx = sqlite3.connect('cadastro.bd')
+    cnx = sqlite3.connect('cadastro.db')
     c = cnx.cursor()
 
         
@@ -140,7 +140,7 @@ def change_lang(id):
 # Deletar cadastros
 @app.route('/cad/<int:id>', methods=['DELETE'])
 def remove_dev(id):
-    cnx = sqlite3.connect('cadastro.bd')
+    cnx = sqlite3.connect('cadastro.db')
     c = cnx.cursor()
     c.execute(f'delete from usuarios where "id" = "{id}"')
     cnx.commit()
